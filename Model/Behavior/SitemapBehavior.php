@@ -24,6 +24,7 @@ class SitemapBehavior extends ModelBehavior {
 				'changefreq' => 'daily',
 				'priority' => '0.9',
 				'conditions' => array(),
+				'joins' => array(),
 			);
 		}
 		$this->settings[$Model->alias] = array_merge($this->settings[$Model->alias], $settings);
@@ -56,6 +57,7 @@ class SitemapBehavior extends ModelBehavior {
 		//Load the Model Data
 		$modelData = $Model->find('all', array(
 			'conditions' => $this->settings[$Model->alias]['conditions'],
+			'joins' => $this->settings[$Model->alias]['joins'],
 			'recursive' => -1,
 		));
 
